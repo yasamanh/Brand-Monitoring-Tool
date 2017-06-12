@@ -30,8 +30,8 @@ def index_stock():
     defaults.height = 350
     
     output_file("templates/Timeseries.html")
-    sorted_pd = new_pd.sort_values(["Day"])
-    tsline = TimeSeries(sorted_pd,
+
+    tsline = TimeSeries(new_pd,
                         x='Day', y='EOD',
                         title="Timeseries", ylabel='Stock Prices', legend=True)
     show(tsline)

@@ -2,20 +2,15 @@
 <title>STOCK EOD GRAPH</title>
 <link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
 <div class=page>
- 
+
 
   <div class=metanav>
 
-    
+    {{stock_name}}
 
     <h4>
       <form id='answerform_stock' method='post' action='index_stock' >
-       <p>
-	 Name: <input type='text' name='stock_name' />
-       </p>
-       <p>
-	 <input type='submit' value='submit_stock' />
-       </p>
+	{{stock_name}}
       </form>
     </h4>
   </div>
