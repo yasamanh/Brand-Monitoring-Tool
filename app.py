@@ -15,7 +15,8 @@ def index_stock():
     return render_template('index.html')
   else:
     app.vars['name'] = request.form['stock_name']
-    r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+app.vars['name']+'.json',auth=('yasaman.haghpanah@gmail.com', 'yasigole20'), headers={'Authorization':'M3Lz2KmyPXch_zQyyS2o'})
+    r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+app.vars['name']+'.json?api_key=pHsoz965RzenMwNwBsdS')
+                     #,auth=('yasaman.haghpanah@gmail.com', 'yasigole20'), headers={'Authorization':'M3Lz2KmyPXch_zQyyS2o'})
     r.status_code
     json_data = json.loads(r.text)
     pd_apple = json_normalize(json_data['dataset'])    
