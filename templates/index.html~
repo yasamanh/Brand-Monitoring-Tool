@@ -1,15 +1,15 @@
 <!doctype html>
-<title>A short quiz</title>
+<title>STOCK EOD GRAPH</title>
 <link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
 <div class=page>
-  <h1>Question #{{num}}</h1>
+ 
 
   <div class=metanav>
 
     
 
     <h4>
-      <form id='answerform_stock' method='post' action='index_stock' >
+      <form id='answerform_stock' method='post' action='index' >
        <p>
 	 Name: <input type='text' name='stock_name' />
        </p>

@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.vars={}
 
-@app.route('/index_stock',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def index_stock():
   if request.method == 'GET':
     return render_template('index.html')
