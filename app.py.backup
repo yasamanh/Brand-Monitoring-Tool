@@ -4,7 +4,6 @@ import simplejson as json
 from pandas.io.json import json_normalize
 import pandas as pd
 from bokeh.charts import show, output_file, defaults, TimeSeries
-from bokeh.embed import components
 
 app = Flask(__name__)
 
@@ -15,7 +14,6 @@ def index_stock():
   if request.method == 'GET':
     return render_template('index.html')
   else:
-    #return render_template('Timeseries.html')
     app.vars['name'] = request.form['stock_name']
     r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+app.vars['name']+'.json?api_key=pHsoz965RzenMwNwBsdS')
                      #,auth=('yasaman.haghpanah@gmail.com', 'yasigole20'), headers={'Authorization':'M3Lz2KmyPXch_zQyyS2o'})
@@ -32,18 +30,15 @@ def index_stock():
     defaults.width = 600
     defaults.height = 350
     
-    #output_file("templates/Timeseries.html")
+    output_file("templates/Timeseries.html")
     sorted_pd = new_pd.sort_values(["Day"])
     tsline = TimeSeries(sorted_pd,
                         x='Day', y='EOD',
                         title="Timeseries", ylabel='Stock Prices', legend=True)
    
-    #show(tsline)
-    return render_template('graphs.html',stock_name=len(new_pd))
-    #return render_template('index.html')
-    #script, div = components(tsline)
-    #return render_template('graphs_tdi.html', script=script, div=div)
+    show(tsline)
+    #return render_template('graphs.html',stock_name=len(new_pd))
+    return render_template('index.html')
 
 if __name__ == '__main__':
-  #app.run(port=33507)
-  app.run(host='0.0.0.0')
+  app.run(port=33507)
